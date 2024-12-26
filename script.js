@@ -94,7 +94,7 @@ async function deleteQuestion(questionId) {
     }); 
 }
 // event listener for form submission
-const questionForm = document.getElementById('question-form');
+const questionForm = document.getElementById('questionForm');
 questionForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const questionData = {

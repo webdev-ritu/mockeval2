@@ -116,15 +116,15 @@ questionForm.addEventListener('submit', async (event) => {
 
 //event listener for delete and review buttons
 document.addEventListener('click', async (event) => {
-    if (event.target.classList.contains('delete-btn')) {
-        const questionCard = event.target.parentElement;
-        const questionId = questionCard.id;
-        const deleted = await deleteQuestion(questionId);
-        if (deleted) {
-            alert('Question deleted successfully');
-            const questions = await fetchQuestions();
-            displayQuestions(questions);
-        }
+    if (event.target.classList.contains('delete-btn')){
+        const questionCard = event.target.closet('.question-card');
+        const questionId = questionCard.getAttribute('data-id');
+        if (confirm('Are you sure you want to delete this question?')) {
+            const success = await deleteQuestion(questionId);
+            if (success) {
+               questionCard.remove();
+    }
+    }
     }
     if (event.target.classList.contains('review-btn')) {
         const questionCard = event.target.parentElement;
@@ -137,6 +137,7 @@ document.addEventListener('click', async (event) => {
         }
     }
 });
+
 fetchQuestions().then(displayQuestions);
 
 
